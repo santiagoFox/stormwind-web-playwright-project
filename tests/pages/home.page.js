@@ -21,12 +21,12 @@ class HomePage extends BasePage {
     // Teams section
     this.teamsSectionLabel   = page.getByText(/Manage your team.s learning/i);
     this.teamsMainHeading    = page.getByText('Build a future-ready workforce');
-    this.tabTeamDashboard    = page.getByTestId('tab-button-dt-0');
-    this.tabStudentReports   = page.getByTestId('tab-button-dt-1');
-    this.tabAssignCourses    = page.getByTestId('tab-button-dt-2');
-    this.tabLicenses         = page.getByTestId('tab-button-dt-3');
-    this.tabLearningPaths    = page.getByTestId('tab-button-dt-4');
-    this.tabSkillsAssessments = page.getByTestId('tab-button-dt-6');
+    this.tabTeamDashboard    = page.getByRole('tab', { name: 'Team Dashboard' });
+    this.tabStudentReports   = page.getByRole('tab', { name: 'Student Reports' });
+    this.tabAssignCourses    = page.getByRole('tab', { name: 'Assign Courses' });
+    this.tabLicenses         = page.getByRole('tab', { name: 'Licenses Management' });
+    this.tabLearningPaths    = page.getByRole('tab', { name: 'Learning Paths' });
+    this.tabSkillsAssessments = page.getByRole('tab', { name: 'Skill Assessments' });
 
     // Performance CTA section
     this.performanceHeading  = page.getByText('Turn learning into performance');
