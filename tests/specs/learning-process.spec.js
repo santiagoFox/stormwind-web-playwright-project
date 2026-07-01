@@ -44,60 +44,17 @@ test.describe('SC12 - Courses Catalog', () => {
     await expect(learningProcessPage.catalogHeading).toBeVisible();
   });
 
-  test('SC12-TC03 - "IT" category is visible', async ({ learningProcessPage }) => {
-    await learningProcessPage.scrollToElement(learningProcessPage.categoryIT);
-    await expect(learningProcessPage.categoryIT).toBeVisible();
-  });
-
-  test('SC12-TC04 - "DevOps" category is visible', async ({ learningProcessPage }) => {
-    await learningProcessPage.scrollToElement(learningProcessPage.categoryDevOps);
-    await expect(learningProcessPage.categoryDevOps).toBeVisible();
-  });
-
-  test('SC12-TC05 - "Full Stack Developer" category is visible', async ({ learningProcessPage }) => {
-    await learningProcessPage.scrollToElement(learningProcessPage.categoryFullStack);
-    await expect(learningProcessPage.categoryFullStack).toBeVisible();
-  });
-
-  test('SC12-TC06 - "Data Science" category is visible', async ({ learningProcessPage }) => {
-    await learningProcessPage.scrollToElement(learningProcessPage.categoryDataSci);
-    await expect(learningProcessPage.categoryDataSci).toBeVisible();
-  });
-
-  test('SC12-TC07 - "Project Management" category is visible', async ({ learningProcessPage }) => {
-    await learningProcessPage.scrollToElement(learningProcessPage.categoryProjMgmt);
-    await expect(learningProcessPage.categoryProjMgmt).toBeVisible();
-  });
-
-  test('SC12-TC08 - "End User" category is visible', async ({ learningProcessPage }) => {
-    await learningProcessPage.scrollToElement(learningProcessPage.categoryEndUser);
-    await expect(learningProcessPage.categoryEndUser).toBeVisible();
-  });
-
-  test('SC12-TC09 - "Business Skills" category is visible', async ({ learningProcessPage }) => {
-    await learningProcessPage.scrollToElement(learningProcessPage.categoryBizSkills);
-    await expect(learningProcessPage.categoryBizSkills).toBeVisible();
-  });
-
-  test('SC12-TC10 - "Compliance" category is visible', async ({ learningProcessPage }) => {
-    await learningProcessPage.scrollToElement(learningProcessPage.categoryCompliance);
-    await expect(learningProcessPage.categoryCompliance).toBeVisible();
-  });
-
-  test('SC12-TC11 - "EXPLORE THE FULL LIBRARY" button is visible', async ({ learningProcessPage }) => {
-    await learningProcessPage.scrollToElement(learningProcessPage.exploreLibraryBtn);
-    await expect(learningProcessPage.exploreLibraryBtn).toBeVisible();
-  });
+  // Redesign (2026): the standalone "Courses Catalog" category-card grid
+  // (former SC12-TC03..TC11) was replaced by the filter-chip "Course Library"
+  // section — that coverage now lives in SC15 (category chips + course cards +
+  // Explore the full library button).
 
 });
 
 test.describe('SC13 - Storm AI Learning', () => {
 
-  test('SC13-TC01 - "Storm AI Learning" heading is visible', async ({ learningProcessPage }) => {
-    await learningProcessPage.scrollToElement(learningProcessPage.stormAIHeading);
-    await expect(learningProcessPage.stormAIHeading).toBeVisible();
-  });
-
+  // Redesign removed the standalone "Storm AI Learning" hero heading (former
+  // SC13-TC01); the section now leads with the CTA block asserted below.
   test('SC13-TC02 - "TRY IT NOW" eyebrow is visible', async ({ learningProcessPage }) => {
     await learningProcessPage.scrollToElement(learningProcessPage.tryItNowEyebrow);
     await expect(learningProcessPage.tryItNowEyebrow).toBeVisible();
@@ -115,25 +72,8 @@ test.describe('SC13 - Storm AI Learning', () => {
 
 });
 
-test.describe('SC14 - Storm AI Features', () => {
-
-  test('SC14-TC01 - "Learn faster. Retain more. Finish stronger." heading is visible', async ({ learningProcessPage }) => {
-    await learningProcessPage.scrollToElement(learningProcessPage.stormAIFeaturesTitle);
-    await expect(learningProcessPage.stormAIFeaturesTitle).toBeVisible();
-  });
-
-  test('SC14-TC02 - Storm AI feature tabs are visible', async ({ learningProcessPage }) => {
-    await learningProcessPage.scrollToElement(learningProcessPage.stormAIFeatureStudy);
-    await expect(learningProcessPage.stormAIFeatureStudy).toBeVisible();
-    await expect(learningProcessPage.stormAIFeatureExam).toBeVisible();
-    await expect(learningProcessPage.stormAIFeatureTopic).toBeVisible();
-    await expect(learningProcessPage.stormAIFeatureFast).toBeVisible();
-    await expect(learningProcessPage.stormAIFeatureExaminer).toBeVisible();
-    await expect(learningProcessPage.stormAIFeatureFlash).toBeVisible();
-    await expect(learningProcessPage.stormAIFeatureHighlight).toBeVisible();
-  });
-
-});
+// SC14 (Storm AI "Learn faster…" multi-tab features section) was removed in the
+// 2026 redesign — that section no longer exists on /learning-process.
 
 test.describe('SC15 - Course Library', () => {
 
@@ -146,11 +86,20 @@ test.describe('SC15 - Course Library', () => {
     await learningProcessPage.scrollToElement(learningProcessPage.filterChipAI);
     await expect(learningProcessPage.filterChipAI).toBeVisible();
     await expect(learningProcessPage.filterChipDevOps).toBeVisible();
+    await expect(learningProcessPage.filterChipIT).toBeVisible();
+    await expect(learningProcessPage.filterChipDataSci).toBeVisible();
+    await expect(learningProcessPage.filterChipProjMgmt).toBeVisible();
+    await expect(learningProcessPage.filterChipCompliance).toBeVisible();
   });
 
   test('SC15-TC03 - Course cards are visible', async ({ learningProcessPage }) => {
     await learningProcessPage.scrollToElement(learningProcessPage.courseCard);
     await expect(learningProcessPage.courseCard).toBeVisible();
+  });
+
+  test('SC15-TC04 - "Explore the full library" button is visible', async ({ learningProcessPage }) => {
+    await learningProcessPage.scrollToElement(learningProcessPage.exploreLibraryBtn);
+    await expect(learningProcessPage.exploreLibraryBtn).toBeVisible();
   });
 
 });

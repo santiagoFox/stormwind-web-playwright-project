@@ -15,28 +15,17 @@ test.describe('SC26 - Search & Filters', () => {
     await expect(skillsAssessmentsPage.searchInput).toBeVisible();
   });
 
-  test('SC26-TC02 - Topic filter chips are visible', async ({ skillsAssessmentsPage }) => {
-    await expect(skillsAssessmentsPage.filterChips).toBeVisible();
-    await expect(skillsAssessmentsPage.filterChipAll).toBeVisible();
-  });
-
-  test('SC26-TC03 - Filters panel is visible', async ({ skillsAssessmentsPage }) => {
-    await expect(skillsAssessmentsPage.filtersPanel).toBeVisible();
-  });
-
-  test('SC26-TC04 - Filter sections are visible', async ({ skillsAssessmentsPage }) => {
-    await expect(skillsAssessmentsPage.filterContentType).toBeVisible();
-    await expect(skillsAssessmentsPage.filterDifficulty).toBeVisible();
-    await expect(skillsAssessmentsPage.filterInstructor).toBeVisible();
-    await expect(skillsAssessmentsPage.filterVendor).toBeVisible();
-  });
+  // Redesign (2026): the topic filter chips and the dedicated filters panel
+  // (content-type/difficulty/instructor/vendor sections) were removed — search
+  // is the only filter UI now, so the former SC26-TC02/TC03/TC04 have no UI to
+  // assert.
 
 });
 
 test.describe('SC27 - Assessment Cards', () => {
 
   test('SC27-TC01 - Assessment card grid is visible', async ({ skillsAssessmentsPage }) => {
-    await expect(skillsAssessmentsPage.courseGrid).toBeVisible();
+    await expect(skillsAssessmentsPage.grid).toBeVisible();
   });
 
   test('SC27-TC02 - First assessment card is visible', async ({ skillsAssessmentsPage }) => {
@@ -44,7 +33,7 @@ test.describe('SC27 - Assessment Cards', () => {
   });
 
   test('SC27-TC03 - First card has a title', async ({ skillsAssessmentsPage }) => {
-    await expect(skillsAssessmentsPage.firstCardTitle).toBeVisible();
+    await expect(skillsAssessmentsPage.firstCardTitle.first()).toBeVisible();
   });
 
 });

@@ -4,19 +4,22 @@ class HomePage extends BasePage {
   constructor(page) {
     super(page);
 
-    // Header / Navigation
+    // Header / Navigation — 2026 redesign: For Teams/For Individuals/Labs were
+    // replaced by the Solutions / Browse / Extras dropdown menus; the sales CTA
+    // is now "REQUEST LIVE DEMO". Nav items use desktop-nav-* test IDs (unique,
+    // so no mobile/desktop strict-mode clash).
     this.logo           = page.getByRole('link', { name: /stormwind/i }).first();
-    this.navForTeams    = page.getByRole('link', { name: 'For Teams' });
-    this.navForIndividuals = page.getByRole('link', { name: 'For Individuals' });
-    this.navLearningProcess = page.getByRole('link', { name: 'Our Learning Process' });
-    this.navLabs        = page.getByRole('link', { name: 'Labs' });
-    this.navTalkWithSales = page.getByRole('link', { name: /talk with sales team/i });
-    this.navSignIn      = page.getByRole('link', { name: /sign in/i });
+    this.navSolutions       = page.getByTestId('desktop-nav-solutions');
+    this.navLearningProcess = page.getByTestId('desktop-nav-our-learning-process');
+    this.navBrowse          = page.getByTestId('desktop-nav-browse');
+    this.navExtras          = page.getByTestId('desktop-nav-extras');
+    this.navRequestDemo = page.getByRole('link', { name: /request live demo/i }).first();
+    this.navSignIn      = page.getByRole('link', { name: /sign in/i }).first();
 
     // Hero section
-    this.heroHeading    = page.getByText(/This is how your company grows with/i);
+    this.heroHeading    = page.getByText(/Stop learning what you already know/i);
     this.heroCtaTeams   = page.getByRole('link', { name: /discover team tools/i });
-    this.heroCtaCourses = page.getByRole('link', { name: /see all courses/i });
+    this.heroCtaLearningProcess = page.getByRole('link', { name: /see our learning process/i }).first();
 
     // Teams section
     this.teamsSectionLabel   = page.getByText(/Manage your team.s learning/i);
@@ -39,17 +42,18 @@ class HomePage extends BasePage {
     this.featureLearningPaths = page.getByTestId('feature-title-2').last();
     this.featureSkillsAssessments = page.getByTestId('feature-title-3').last();
 
-    // Labs section
-    this.labsHeading         = page.getByText('Hands On Experience');
-    this.labsHandsOn         = page.getByTestId('lab-title-0').last();
-    this.labsPracticeExams   = page.getByTestId('lab-title-1').last();
+    // Labs section — redesign replaced the individual lab cards (lab-title-0/1)
+    // with an eyebrow/title/subtitle + an "Explore Industry-Based Labs" section.
+    this.labsHeading         = page.getByTestId('labs-title');
+    this.labsSubtitle        = page.getByTestId('labs-subtitle');
+    this.exploreLabsSection  = page.getByTestId('explore-labs-section');
 
     // Workforce CTA section
     this.workforceHeading    = page.getByText('Take your workforce to the next level');
     this.exploreTeamsBtn     = page.getByRole('link', { name: /explore teams experience/i });
 
-    // Storm AI section
-    this.stormAILearningHeading = page.getByTestId('stormai-learning-hero-title');
+    // Storm AI section — home now surfaces only the Storm AI Tutor block
+    // (the "Storm AI Learning" hero heading lives on /learning-process).
     this.stormAITutorHeading    = page.getByText('Meet Storm AI Tutor');
     this.learnMoreTutorBtn      = page.getByRole('link', { name: /learn more about storm ai tutor/i });
 
@@ -65,9 +69,7 @@ class HomePage extends BasePage {
     this.footerEpicLiveCourses = page.getByText('Epic Live Courses', { exact: false });
     this.footerPopularTopics   = page.getByText('Popular Topics', { exact: false });
     this.footerGetInTouch      = page.getByText('Get In Touch', { exact: false });
-    this.footerCisco           = page.locator('footer').getByRole('link', { name: 'Cisco' });
-    this.footerPrivacyPolicy   = page.locator('footer').getByRole('link', { name: /privacy policy/i });
-    this.footerTerms           = page.locator('footer').getByRole('link', { name: /terms and conditions/i });
+    // Redesign removed the Cisco / Privacy Policy / Terms footer links.
     this.footerCareers         = page.locator('footer').getByRole('link', { name: /careers/i });
   }
 
@@ -76,18 +78,8 @@ class HomePage extends BasePage {
     await this.waitForPageLoad();
   }
 
-  async clickNavForTeams() {
-    await this.navForTeams.click();
-    await this.waitForPageLoad();
-  }
-
-  async clickNavForIndividuals() {
-    await this.navForIndividuals.click();
-    await this.waitForPageLoad();
-  }
-
-  async clickTalkWithSales() {
-    await this.navTalkWithSales.click();
+  async clickRequestDemo() {
+    await this.navRequestDemo.click();
     await this.waitForPageLoad();
   }
 
