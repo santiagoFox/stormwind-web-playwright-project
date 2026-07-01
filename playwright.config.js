@@ -7,7 +7,7 @@ module.exports = defineConfig({
   workers: 1,
   reporter: 'html',
   use: {
-    baseURL: 'https://stormwind-new-website.vercel.app',
+    baseURL: 'https://www.stormwindstudios.com',
     headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
