@@ -4,6 +4,7 @@ const LearningProcessPage = require('../pages/learning-process.page');
 const BrowseCoursesPage = require('../pages/browse-courses.page');
 const LearningPathsPage = require('../pages/learning-paths.page');
 const SkillsAssessmentsPage = require('../pages/skills-assessments.page');
+const LabsPage = require('../pages/labs.page');
 
 const test = base.extend({
   homePage: async ({ page }, use) => {
@@ -30,6 +31,11 @@ const test = base.extend({
     const skillsAssessmentsPage = new SkillsAssessmentsPage(page);
     await skillsAssessmentsPage.open();
     await use(skillsAssessmentsPage);
+  },
+  labsPage: async ({ page }, use) => {
+    const labsPage = new LabsPage(page);
+    await labsPage.open();
+    await use(labsPage);
   },
 });
 
