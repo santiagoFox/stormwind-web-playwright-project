@@ -7,24 +7,24 @@ test.describe('SC01 - Header / Navigation', () => {
     await expect(homePage.logo).toBeVisible();
   });
 
-  test('SC01-TC02 - "For Teams" nav link is visible', async ({ homePage }) => {
-    await expect(homePage.navForTeams).toBeVisible();
+  test('SC01-TC02 - "Solutions" nav menu is visible', async ({ homePage }) => {
+    await expect(homePage.navSolutions).toBeVisible();
   });
 
-  test('SC01-TC03 - "For Individuals" nav link is visible', async ({ homePage }) => {
-    await expect(homePage.navForIndividuals).toBeVisible();
+  test('SC01-TC03 - "Browse" nav menu is visible', async ({ homePage }) => {
+    await expect(homePage.navBrowse).toBeVisible();
   });
 
   test('SC01-TC04 - "Our Learning Process" nav link is visible', async ({ homePage }) => {
     await expect(homePage.navLearningProcess).toBeVisible();
   });
 
-  test('SC01-TC05 - "Labs" nav link is visible', async ({ homePage }) => {
-    await expect(homePage.navLabs).toBeVisible();
+  test('SC01-TC05 - "Extras" nav menu is visible', async ({ homePage }) => {
+    await expect(homePage.navExtras).toBeVisible();
   });
 
-  test('SC01-TC06 - "Talk With Sales Team" CTA is visible', async ({ homePage }) => {
-    await expect(homePage.navTalkWithSales).toBeVisible();
+  test('SC01-TC06 - "Request Live Demo" CTA is visible', async ({ homePage }) => {
+    await expect(homePage.navRequestDemo).toBeVisible();
   });
 
   test('SC01-TC07 - "Sign In" link is visible', async ({ homePage }) => {
@@ -43,8 +43,8 @@ test.describe('SC02 - Hero Section', () => {
     await expect(homePage.heroCtaTeams).toBeVisible();
   });
 
-  test('SC02-TC03 - "See All Courses" CTA is visible', async ({ homePage }) => {
-    await expect(homePage.heroCtaCourses).toBeVisible();
+  test('SC02-TC03 - "See Our Learning Process" hero CTA is visible', async ({ homePage }) => {
+    await expect(homePage.heroCtaLearningProcess).toBeVisible();
   });
 
 });
@@ -107,25 +107,22 @@ test.describe('SC05 - Labs Section', () => {
     await expect(homePage.labsHeading).toBeVisible();
   });
 
-  test('SC05-TC02 - "Hands-on labs" card is visible', async ({ homePage }) => {
-    await homePage.scrollToElement(homePage.labsHandsOn);
-    await expect(homePage.labsHandsOn).toBeVisible();
+  test('SC05-TC02 - Labs subtitle is visible', async ({ homePage }) => {
+    await homePage.scrollToElement(homePage.labsSubtitle);
+    await expect(homePage.labsSubtitle).toBeVisible();
   });
 
-  test('SC05-TC03 - "Practice Exams" card is visible', async ({ homePage }) => {
-    await homePage.scrollToElement(homePage.labsPracticeExams);
-    await expect(homePage.labsPracticeExams).toBeVisible();
+  test('SC05-TC03 - "Explore Industry-Based Labs" section is visible', async ({ homePage }) => {
+    await homePage.scrollToElement(homePage.exploreLabsSection);
+    await expect(homePage.exploreLabsSection).toBeVisible();
   });
 
 });
 
 test.describe('SC06 - Storm AI Section', () => {
 
-  test('SC06-TC01 - "Storm AI Learning" heading is visible', async ({ homePage }) => {
-    await homePage.scrollToElement(homePage.stormAILearningHeading);
-    await expect(homePage.stormAILearningHeading).toBeVisible();
-  });
-
+  // Redesign: the home Storm AI block is now the Storm AI Tutor section; the
+  // "Storm AI Learning" hero heading moved to /learning-process (former TC01).
   test('SC06-TC02 - "Meet Storm AI Tutor" heading is visible', async ({ homePage }) => {
     await homePage.scrollToElement(homePage.stormAITutorHeading);
     await expect(homePage.stormAITutorHeading).toBeVisible();
@@ -183,21 +180,8 @@ test.describe('SC09 - Footer', () => {
     await expect(homePage.footerGetInTouch).toBeVisible();
   });
 
-  test('SC09-TC04 - Footer "Cisco" link is present', async ({ homePage }) => {
-    await homePage.scrollToElement(homePage.footerCisco);
-    await expect(homePage.footerCisco).toBeVisible();
-  });
-
-  test('SC09-TC05 - Footer "Privacy Policy" link is present', async ({ homePage }) => {
-    await homePage.scrollToElement(homePage.footerPrivacyPolicy);
-    await expect(homePage.footerPrivacyPolicy).toBeVisible();
-  });
-
-  test('SC09-TC06 - Footer "Terms and Conditions" link is present', async ({ homePage }) => {
-    await homePage.scrollToElement(homePage.footerTerms);
-    await expect(homePage.footerTerms).toBeVisible();
-  });
-
+  // Redesign removed the Cisco / Privacy Policy / Terms footer links (former
+  // SC09-TC04/05/06).
   test('SC09-TC07 - Footer "Careers" link is present', async ({ homePage }) => {
     await homePage.scrollToElement(homePage.footerCareers);
     await expect(homePage.footerCareers).toBeVisible();
